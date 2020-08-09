@@ -33,60 +33,60 @@ $("#candidates").on("click", function () {
 
             var cellDiv = $("<div>").attr({
                 "class": "medium-6 large-4 cell"
-                });
-                $(officialDiv).append(cellDiv);
+            });
+            $(officialDiv).append(cellDiv);
 
             var cardDiv = $("<div>").attr({
                 "class": "card"
-                });
-                $(cellDiv).append(cardDiv);
+            });
+            $(cellDiv).append(cardDiv);
 
             var sectionDiv = $("<div>").attr({
                 "class": "card-section"
-                });
-                $(cardDiv).append(sectionDiv);
+            });
+            $(cardDiv).append(sectionDiv);
 
             var portraitImg = $("<img>").attr({
                 "class": "float-center",
-                "style": "margin-right: 40px",
+                "style": "margin-bottom: 40px",
                 "width": "200px",
                 "alt": "Portrait",
                 "id": "portrait"
+            });
+            if (photo) {
+                $(portraitImg).attr({
+                    "src": photo
                 });
-                if (photo) {
-                    $(portraitImg).attr({
-                        "src": photo
-                    });
-                    $(sectionDiv).append(portraitImg)
-                };
+                $(sectionDiv).append(portraitImg)
+            };
 
             var offName = $("<h3>").attr({
                 "id": "official-name"
-                });
-                $(offName).text(name);
+            });
+            $(offName).text(name);
 
             var offOffice = $("<p>").attr({
                 "id": "official-office",
                 "style": "font-weight: bold"
-                });
-                $(offOffice).text(office);
+            });
+            $(offOffice).text(office);
 
             var offParty = $("<p>").attr({
                 "id": "official-party",
                 "style": "font-style: italic"
-                });
-                $(offParty).text(party);
+            });
+            $(offParty).text(party);
 
             var offContact = $("<p>").attr({
                 "id": "official-contact"
-                });
-                $(offContact).html("Contact Info:" + "<br/>" + phone + "<br/>" + email);
+            });
+            $(offContact).html("Contact Info:" + "<br/>" + phone + "<br/>" + email);
 
             var offWebsite = $("<a>").attr({
                 "id": "official-website",
                 "target": "_blank"
-                });
-                $(offWebsite).attr("href", website).text("More information");
+            });
+            $(offWebsite).attr("href", website).text("More information");
 
             $(sectionDiv).append(offName, offOffice, offParty, offContact, offWebsite);
 

@@ -1,5 +1,5 @@
 var electInfo = document.getElementById("next-election");
-var startOver = document.getElementById("new-address");
+var startOver = document.getElementById("start-over");
 var introCard = document.getElementById("introCard");
 var canCards = document.getElementById("canCards");
 var newsFeed = document.getElementById("newsFeed");
@@ -82,42 +82,6 @@ $("#news").on("click", function () {
     $("#ballots").attr("class", "");
 })
 
-function newAddress() {
-    introCard.style.display = "none";
-    startOver.style.display = "";
-    electInfo.style.display = "";
-    canCards.style.display = "none";
-    newsFeed.style.display = "none";
-    boxMap.style.display = "none";
-
-    $("#offElem").empty();
-
-    var newInput = document.getElementById("newAddressBox").value;
-    var newStoreInput = encodeURIComponent(newInput);
-    localStorage.setItem("Address", newStoreInput);
-
-    var newAddress = localStorage.getItem("Address");
-    var queryURL = "https://www.googleapis.com/civicinfo/v2/voterinfo?key=" + apiKeyGCivic + "&address=" + newAddress;
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        if (response) {
-            var electDate = moment(response.election.electionDay).format("MMMM Do, YYYY");
-            var electType = response.election.name;
-
-            $("#electDates").append([
-                $("<h3>").text("Next Election: " + electType),
-                $("<h4>").text("Date: " + electDate),
-                $("<p>").text("Find more information at the Washington Secretary of State website:"),
-                $("<a>").attr("href", "https://www.sos.wa.gov/elections/").text("www.sos.wa.gov/elections")
-            ])
-        } else {
-            $("#electDates").append([
-                $("<h4>").text("Error: Address not read"),
-                $("<p>").text("Please enter the FULL address again below without any punctuation.")
-            ])
-        }
-    })
+function refreshPage() {
+    location.reload();
 }
