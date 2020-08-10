@@ -14,8 +14,6 @@ function saveAddress() {
     newsFeed.style.display = "none";
     boxMap.style.display = "none";
 
-    // $("#electDates").empty();
-
     var input = document.getElementById("addressTextBox").value;
     var storeInput = encodeURIComponent(input);
     localStorage.setItem("Address", storeInput);
